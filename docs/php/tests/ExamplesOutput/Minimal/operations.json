@@ -1,0 +1,75 @@
+{
+    "basePath": "http://example.com/api",
+    "swaggerVersion": "1.2",
+    "resourcePath": "/operations",
+    "apis": [
+        {
+            "path": "/operations/pets",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Retrieve all pets",
+                    "nickname": "pets_0",
+                    "type": "array[Pet]",
+                    "parameters": [
+                        {
+                            "name": "name",
+                            "type": "string"
+                        },
+                        {
+                            "name": "status",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "method": "POST",
+                    "summary": "Register a new pet",
+                    "nickname": "pets_1",
+                    "type": "Pet"
+                }
+            ]
+        }
+    ],
+    "models": {
+        "Pet": {
+            "id": "Pet",
+            "properties": {
+                "tags": {
+                    "description": "Tags assigned to this pet",
+                    "type": "array",
+                    "items": {
+                        "$ref": "Tag"
+                    }
+                },
+                "id": {
+                    "description": "Unique identifier for the pet",
+                    "type": "integer"
+                },
+                "category": {
+                    "description": "Category the pet is in",
+                    "$ref": "Category"
+                },
+                "status": {
+                    "description": "Pet status in the store",
+                    "type": "string",
+                    "enum": [
+                        "available",
+                        "pending",
+                        "sold"
+                    ]
+                },
+                "name": {
+                    "description": "Friendly name of the pet",
+                    "type": "string"
+                },
+                "photoUrls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

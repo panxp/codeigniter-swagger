@@ -1,0 +1,82 @@
+{
+    "basePath":"http://facetstore.zircote.com/swagger-php/api",
+    "swaggerVersion":"1.2",
+    "apiVersion":"0.2",
+    "resourcePath":"/facet",
+    "apis":[
+        {
+            "path":"/$ref:model/",
+            "description":"allow namespaces and underscores in model names",
+            "operations":[
+                {
+                    "method":"GET",
+                    "nickname":"modelReferencing",
+                    "type":"array",
+                    "items":{
+                        "$ref":"Examples\\Some_Model"
+                    }
+                }
+            ]
+        },
+        {
+            "path":"/facet.{format}/{facetId}",
+            "description":"Operations about facets",
+            "operations":[
+                {
+                    "method":"GET",
+                    "summary":"Find facet by ID",
+                    "nickname":"getfacetById",
+                    "type":"FacetResult",
+                    "parameters":[
+                        {
+                            "paramType":"path",
+                            "name":"facetId",
+                            "type":"string",
+                            "required":true,
+                            "description":"ID of facet that needs to be fetched"
+                        }
+                    ],
+                    "responseMessages":[
+                        {
+                            "code":400,
+                            "message":"Invalid ID supplied"
+                        },
+                        {
+                            "code":404,
+                            "message":"facet not found"
+                        }
+                    ],
+                    "notes":"Returns a facet based on ID"
+                },
+                {
+                    "method":"DELETE",
+                    "summary":"Find facet by ID",
+                    "nickname":"getfacetById",
+                    "parameters":[
+                        {
+                            "paramType":"path",
+                            "name":"facetId",
+                            "type":"string",
+                            "required":true,
+                            "description":"ID of facet that needs to be fetched"
+                        }
+                    ],
+                    "responseMessages":[
+                        {
+                            "code":400,
+                            "message":"Invalid ID supplied"
+                        },
+                        {
+                            "code":404,
+                            "message":"facet not found"
+                        }
+                    ],
+                    "notes":"Returns a facet based on ID"
+                }
+            ]
+        }
+    ],
+    "produces":[
+        "application/json"
+    ]
+}

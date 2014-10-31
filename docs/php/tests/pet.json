@@ -1,0 +1,446 @@
+{
+    "basePath":"http://petstore.swagger.wordnik.com/api",
+    "swaggerVersion":"1.2",
+    "apiVersion":"1.0.0",
+    "resourcePath":"/pet",
+    "apis":[
+        {
+            "path":"/pet",
+            "operations":[
+                {
+                    "method":"POST",
+                    "summary":"Add a new pet to the store",
+                    "nickname":"addPet",
+                    "type":"void",
+                    "parameters":[
+                        {
+                            "paramType":"body",
+                            "name":"body",
+                            "type":"Pet",
+                            "required":true,
+                            "allowMultiple":false,
+                            "description":"Pet object that needs to be added to the store"
+                        }
+                    ],
+                    "responseMessages":[
+                        {
+                            "code":405,
+                            "message":"Invalid input"
+                        }
+                    ],
+                    "notes":"",
+                    "consumes":[
+                        "application/json",
+                        "application/xml"
+                    ],
+                    "authorizations":{
+                        "oauth2":[
+                            {
+                                "scope":"write:pets",
+                                "description":"Modify pets in your account"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "method":"PUT",
+                    "summary":"Update an existing pet",
+                    "nickname":"updatePet",
+                    "type":"void",
+                    "parameters":[
+                        {
+                            "paramType":"body",
+                            "name":"body",
+                            "type":"Pet",
+                            "required":true,
+                            "allowMultiple":false,
+                            "description":"Pet object that needs to be updated in the store"
+                        }
+                    ],
+                    "responseMessages":[
+                        {
+                            "code":400,
+                            "message":"Invalid ID supplied"
+                        },
+                        {
+                            "code":404,
+                            "message":"Pet not found"
+                        },
+                        {
+                            "code":405,
+                            "message":"Validation exception"
+                        }
+                    ],
+                    "notes":"",
+                    "authorizations":{
+
+                    }
+                }
+            ]
+        },
+        {
+            "path":"/pet/findByStatus",
+            "operations":[
+                {
+                    "method":"GET",
+                    "summary":"Finds Pets by status",
+                    "nickname":"findPetsByStatus",
+                    "type":"array",
+                    "items":{
+                        "$ref":"Pet"
+                    },
+                    "parameters":[
+                        {
+                            "paramType":"query",
+                            "name":"status",
+                            "type":"string",
+                            "required":true,
+                            "allowMultiple":true,
+                            "description":"Status values that need to be considered for filter",
+                            "enum":[
+                                "available",
+                                "pending",
+                                "sold"
+                            ],
+                            "defaultValue":"available"
+                        }
+                    ],
+                    "responseMessages":[
+                        {
+                            "code":400,
+                            "message":"Invalid status value"
+                        }
+                    ],
+                    "notes":"Multiple status values can be provided with comma seperated strings",
+                    "authorizations":{
+
+                    }
+                }
+            ]
+        },
+        {
+            "path":"/pet/findByTags",
+            "operations":[
+                {
+                    "method":"GET",
+                    "summary":"Finds Pets by tags",
+                    "nickname":"findPetsByTags",
+                    "type":"array",
+                    "items":{
+                        "$ref":"Pet"
+                    },
+                    "parameters":[
+                        {
+                            "paramType":"query",
+                            "name":"tags",
+                            "type":"string",
+                            "required":true,
+                            "allowMultiple":true,
+                            "description":"Tags to filter by"
+                        }
+                    ],
+                    "responseMessages":[
+                        {
+                            "code":400,
+                            "message":"Invalid tag value"
+                        }
+                    ],
+                    "notes":"Muliple tags can be provided with comma seperated strings. Use tag1, tag2, tag3 for testing.",
+                    "authorizations":{
+
+                    },
+                    "deprecated":"true"
+                }
+            ]
+        },
+        {
+            "path":"/pet/uploadImage",
+            "operations":[
+                {
+                    "method":"POST",
+                    "summary":"uploads an image",
+                    "nickname":"uploadFile",
+                    "type":"void",
+                    "parameters":[
+                        {
+                            "paramType":"form",
+                            "name":"additionalMetadata",
+                            "type":"string",
+                            "required":false,
+                            "allowMultiple":false,
+                            "description":"Additional data to pass to server"
+                        },
+                        {
+                            "paramType":"form",
+                            "name":"file",
+                            "type":"File",
+                            "required":false,
+                            "allowMultiple":false,
+                            "description":"file to upload"
+                        }
+                    ],
+                    "notes":"",
+                    "consumes":[
+                        "multipart/form-data"
+                    ],
+                    "authorizations":{
+                        "oauth2":[
+                            {
+                                "scope":"write:pets",
+                                "description":"Modify pets in your account"
+                            },
+                            {
+                                "scope":"read:pets",
+                                "description":"Read your pets"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "path":"/pet/{petId}",
+            "operations":[
+                {
+                    "method":"GET",
+                    "summary":"Find pet by ID",
+                    "nickname":"getPetById",
+                    "type":"Pet",
+                    "parameters":[
+                        {
+                            "paramType":"path",
+                            "name":"petId",
+                            "type":"integer",
+                            "required":true,
+                            "allowMultiple":false,
+                            "description":"ID of pet that needs to be fetched",
+                            "format":"int64",
+                            "minimum":"1.0",
+                            "maximum":"100000.0"
+                        }
+                    ],
+                    "responseMessages":[
+                        {
+                            "code":400,
+                            "message":"Invalid ID supplied"
+                        },
+                        {
+                            "code":404,
+                            "message":"Pet not found"
+                        }
+                    ],
+                    "notes":"Returns a pet based on ID",
+                    "authorizations":{
+
+                    }
+                },
+                {
+                    "method":"DELETE",
+                    "summary":"Deletes a pet",
+                    "nickname":"deletePet",
+                    "type":"void",
+                    "parameters":[
+                        {
+                            "paramType":"path",
+                            "name":"petId",
+                            "type":"string",
+                            "required":true,
+                            "allowMultiple":false,
+                            "description":"Pet id to delete"
+                        }
+                    ],
+                    "responseMessages":[
+                        {
+                            "code":400,
+                            "message":"Invalid pet value"
+                        }
+                    ],
+                    "notes":"",
+                    "authorizations":{
+                        "oauth2":[
+                            {
+                                "scope":"write:pets",
+                                "description":"Modify pets in your account"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "method":"PATCH",
+                    "summary":"partial updates to a pet",
+                    "nickname":"partialUpdate",
+                    "type":"array",
+                    "items":{
+                        "$ref":"Pet"
+                    },
+                    "parameters":[
+                        {
+                            "paramType":"path",
+                            "name":"petId",
+                            "type":"string",
+                            "required":true,
+                            "allowMultiple":false,
+                            "description":"ID of pet that needs to be fetched"
+                        },
+                        {
+                            "paramType":"body",
+                            "name":"body",
+                            "type":"Pet",
+                            "required":true,
+                            "allowMultiple":false,
+                            "description":"Pet object that needs to be added to the store"
+                        }
+                    ],
+                    "responseMessages":[
+                        {
+                            "code":400,
+                            "message":"Invalid tag value"
+                        }
+                    ],
+                    "notes":"",
+                    "produces":[
+                        "application/json",
+                        "application/xml"
+                    ],
+                    "consumes":[
+                        "application/json",
+                        "application/xml"
+                    ],
+                    "authorizations":{
+                        "oauth2":[
+                            {
+                                "scope":"write:pets",
+                                "description":"Modify pets in your account"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "method":"POST",
+                    "summary":"Updates a pet in the store with form data",
+                    "nickname":"updatePetWithForm",
+                    "type":"void",
+                    "parameters":[
+                        {
+                            "paramType":"path",
+                            "name":"petId",
+                            "type":"string",
+                            "required":true,
+                            "allowMultiple":false,
+                            "description":"ID of pet that needs to be updated"
+                        },
+                        {
+                            "paramType":"form",
+                            "name":"name",
+                            "type":"string",
+                            "required":false,
+                            "allowMultiple":false,
+                            "description":"Updated name of the pet"
+                        },
+                        {
+                            "paramType":"form",
+                            "name":"status",
+                            "type":"string",
+                            "required":false,
+                            "allowMultiple":false,
+                            "description":"Updated status of the pet"
+                        }
+                    ],
+                    "responseMessages":[
+                        {
+                            "code":405,
+                            "message":"Invalid input"
+                        }
+                    ],
+                    "notes":"",
+                    "consumes":[
+                        "application/x-www-form-urlencoded"
+                    ],
+                    "authorizations":{
+                        "oauth2":[
+                            {
+                                "scope":"write:pets",
+                                "description":"Modify pets in your account"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "models":{
+        "Pet":{
+            "id":"Pet",
+            "required":[
+                "id",
+                "name"
+            ],
+            "properties":{
+                "id":{
+                    "description":"unique identifier for the pet",
+                    "type":"integer",
+                    "format":"int64",
+                    "minimum":"0.0",
+                    "maximum":"100.0"
+                },
+                "name":{
+                    "type":"string"
+                },
+                "category":{
+                    "$ref":"Category"
+                },
+                "photoUrls":{
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    }
+                },
+                "tags":{
+                    "type":"array",
+                    "items":{
+                        "$ref":"Tag"
+                    }
+                },
+                "status":{
+                    "description":"pet status in the store",
+                    "type":"string",
+                    "enum":[
+                        "available",
+                        "pending",
+                        "sold"
+                    ]
+                }
+            }
+        },
+        "Category":{
+            "id":"Category",
+            "properties":{
+                "id":{
+                    "type":"integer",
+                    "format":"int64"
+                },
+                "name":{
+                    "type":"string"
+                }
+            }
+        },
+        "Tag":{
+            "id":"Tag",
+            "properties":{
+                "id":{
+                    "type":"integer",
+                    "format":"int64"
+                },
+                "name":{
+                    "type":"string"
+                }
+            }
+        }
+    },
+    "produces":[
+        "application/json",
+        "application/xml",
+        "text/plain",
+        "text/html"
+    ]
+}

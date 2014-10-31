@@ -1,0 +1,42 @@
+{
+    "basePath": "http://facetstore.zircote.com/swagger-php/api",
+    "swaggerVersion": "1.2",
+    "apiVersion": "0.2",
+    "resourcePath": "/facet",
+    "apis": [
+        {
+            "path": "/facet.{format}/{facetId}",
+            "description": "Operations about facets",
+            "operations": [
+                {
+                    "method": "DELETE",
+                    "summary": "Find facet by ID",
+                    "nickname": "getfacetById",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "facetId",
+                            "type": "string",
+                            "required": true,
+                            "description": "ID of facet that needs to be fetched"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 400,
+                            "message": "Invalid ID supplied"
+                        },
+                        {
+                            "code": 404,
+                            "message": "facet not found"
+                        }
+                    ],
+                    "notes": "Returns a facet based on ID"
+                }
+            ]
+        }
+    ],
+    "produces": [
+        "application/json"
+    ]
+}

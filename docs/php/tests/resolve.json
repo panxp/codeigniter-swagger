@@ -1,0 +1,36 @@
+{
+    "basePath":"http://example.com/api",
+    "swaggerVersion":"1.2",
+    "apiVersion":"0.2",
+    "resourcePath":"/resolve",
+    "apis":[
+        {
+            "path":"/resolve",
+            "operations":[
+                {
+                    "method":"GET",
+                    "summary":"Retrieve all dogs",
+                    "nickname":"get_dogs",
+                    "type":"List[Dog]"
+                }
+            ]
+        }
+    ],
+    "models":{
+        "Dog":{
+            "id":"Dog",
+            "description":"A dog. a.k.a. Canis lupus familiaris",
+            "required":[
+                "breed"
+            ],
+            "properties":{
+                "breed":{
+                    "type":"string"
+                },
+                "parent":{
+                    "$ref":"Dog"
+                }
+            }
+        }
+    }
+}

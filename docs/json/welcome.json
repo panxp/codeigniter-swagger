@@ -1,0 +1,42 @@
+{
+    "basePath": "http://localhost/auth/",
+    "swaggerVersion": "1.2",
+    "apiVersion": "0.2",
+    "resourcePath": "/welcome",
+    "apis": [
+        {
+            "path": "welcome/helloword",
+            "description": "Hello world",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Hello world",
+                    "nickname": "helloWord",
+                    "parameters": [
+                        {
+                            "paramType": "query",
+                            "name": "username",
+                            "type": "string",
+                            "required": true,
+                            "description": "your username"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 400,
+                            "message": "Invalid username"
+                        },
+                        {
+                            "code": 404,
+                            "message": "Not found"
+                        }
+                    ],
+                    "notes": "Returns a string"
+                }
+            ]
+        }
+    ],
+    "produces": [
+        "application/json"
+    ]
+}

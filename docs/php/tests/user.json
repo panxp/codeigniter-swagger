@@ -1,0 +1,313 @@
+{
+    "basePath":"http://petstore.swagger.wordnik.com/api",
+    "swaggerVersion":"1.2",
+    "apiVersion":"1.0.0",
+    "resourcePath":"/user",
+    "apis":[
+        {
+            "path":"/user",
+            "operations":[
+                {
+                    "method":"POST",
+                    "summary":"Create user",
+                    "nickname":"createUser",
+                    "type":"void",
+                    "parameters":[
+                        {
+                            "paramType":"body",
+                            "name":"body",
+                            "type":"User",
+                            "required":true,
+                            "allowMultiple":false,
+                            "description":"Created user object"
+                        }
+                    ],
+                    "notes":"This can only be done by the logged in user.",
+                    "authorizations":{
+                        "oauth2":[
+                            {
+                                "scope":"test:anything",
+                                "description":"anything"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "path":"/user/createWithArray",
+            "operations":[
+                {
+                    "method":"POST",
+                    "summary":"Creates list of users with given input array",
+                    "nickname":"createUsersWithArrayInput",
+                    "type":"void",
+                    "parameters":[
+                        {
+                            "paramType":"body",
+                            "name":"body",
+                            "type":"array",
+                            "required":true,
+                            "allowMultiple":false,
+                            "description":"List of user object",
+                            "items":{
+                                "$ref":"User"
+                            }
+                        }
+                    ],
+                    "notes":"",
+                    "authorizations":{
+                        "oauth2":[
+                            {
+                                "scope":"test:anything",
+                                "description":"anything"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "path":"/user/createWithList",
+            "operations":[
+                {
+                    "method":"POST",
+                    "summary":"Creates list of users with given list input",
+                    "nickname":"createUsersWithListInput",
+                    "type":"void",
+                    "parameters":[
+                        {
+                            "paramType":"body",
+                            "name":"body",
+                            "type":"array",
+                            "required":true,
+                            "allowMultiple":false,
+                            "description":"List of user object",
+                            "items":{
+                                "$ref":"User"
+                            }
+                        }
+                    ],
+                    "notes":"",
+                    "authorizations":{
+                        "oauth2":[
+                            {
+                                "scope":"test:anything",
+                                "description":"anything"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "path":"/user/login",
+            "operations":[
+                {
+                    "method":"GET",
+                    "summary":"Logs user into the system",
+                    "nickname":"loginUser",
+                    "type":"string",
+                    "parameters":[
+                        {
+                            "paramType":"query",
+                            "name":"username",
+                            "type":"string",
+                            "required":true,
+                            "allowMultiple":false,
+                            "description":"The user name for login"
+                        },
+                        {
+                            "paramType":"query",
+                            "name":"password",
+                            "type":"string",
+                            "required":true,
+                            "allowMultiple":false,
+                            "description":"The password for login in clear text"
+                        }
+                    ],
+                    "responseMessages":[
+                        {
+                            "code":400,
+                            "message":"Invalid username and password combination"
+                        }
+                    ],
+                    "notes":"",
+                    "authorizations":{
+
+                    }
+                }
+            ]
+        },
+        {
+            "path":"/user/logout",
+            "operations":[
+                {
+                    "method":"GET",
+                    "summary":"Logs out current logged in user session",
+                    "nickname":"logoutUser",
+                    "type":"void",
+                    "notes":"",
+                    "authorizations":{
+
+                    }
+                }
+            ]
+        },
+        {
+            "path":"/user/{username}",
+            "operations":[
+                {
+                    "method":"GET",
+                    "summary":"Get user by user name",
+                    "nickname":"getUserByName",
+                    "type":"User",
+                    "parameters":[
+                        {
+                            "paramType":"path",
+                            "name":"username",
+                            "type":"string",
+                            "required":true,
+                            "allowMultiple":false,
+                            "description":"The name that needs to be fetched. Use user1 for testing."
+                        }
+                    ],
+                    "responseMessages":[
+                        {
+                            "code":400,
+                            "message":"Invalid username supplied"
+                        },
+                        {
+                            "code":404,
+                            "message":"User not found"
+                        }
+                    ],
+                    "notes":"",
+                    "authorizations":{
+
+                    }
+                },
+                {
+                    "method":"PUT",
+                    "summary":"Updated user",
+                    "nickname":"updateUser",
+                    "type":"void",
+                    "parameters":[
+                        {
+                            "paramType":"path",
+                            "name":"username",
+                            "type":"string",
+                            "required":true,
+                            "allowMultiple":false,
+                            "description":"name that need to be deleted"
+                        },
+                        {
+                            "paramType":"body",
+                            "name":"body",
+                            "type":"User",
+                            "required":true,
+                            "allowMultiple":false,
+                            "description":"Updated user object"
+                        }
+                    ],
+                    "responseMessages":[
+                        {
+                            "code":400,
+                            "message":"Invalid username supplied"
+                        },
+                        {
+                            "code":404,
+                            "message":"User not found"
+                        }
+                    ],
+                    "notes":"This can only be done by the logged in user.",
+                    "authorizations":{
+                        "oauth2":[
+                            {
+                                "scope":"test:anything",
+                                "description":"anything"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "method":"DELETE",
+                    "summary":"Delete user",
+                    "nickname":"deleteUser",
+                    "type":"void",
+                    "parameters":[
+                        {
+                            "paramType":"path",
+                            "name":"username",
+                            "type":"string",
+                            "required":true,
+                            "allowMultiple":false,
+                            "description":"The name that needs to be deleted"
+                        }
+                    ],
+                    "responseMessages":[
+                        {
+                            "code":400,
+                            "message":"Invalid username supplied"
+                        },
+                        {
+                            "code":404,
+                            "message":"User not found"
+                        }
+                    ],
+                    "notes":"This can only be done by the logged in user.",
+                    "authorizations":{
+                        "oauth2":[
+                            {
+                                "scope":"test:anything",
+                                "description":"anything"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "models":{
+        "User":{
+            "id":"User",
+            "properties":{
+                "id":{
+                    "type":"integer",
+                    "format":"int64"
+                },
+                "firstName":{
+                    "type":"string"
+                },
+                "username":{
+                    "type":"string"
+                },
+                "lastName":{
+                    "type":"string"
+                },
+                "email":{
+                    "type":"string"
+                },
+                "password":{
+                    "type":"string"
+                },
+                "phone":{
+                    "type":"string"
+                },
+                "userStatus":{
+                    "description":"User Status",
+                    "type":"integer",
+                    "format":"int32",
+                    "enum":[
+                        "1-registered",
+                        "2-active",
+                        "3-closed"
+                    ]
+                }
+            }
+        }
+    },
+    "produces":[
+        "application/json"
+    ]
+}

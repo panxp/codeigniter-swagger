@@ -1,0 +1,51 @@
+{
+    "swaggerVersion":"1.2",
+    "apiVersion":"1.0.0",
+    "resourcePath":"/logs",
+    "apis":[
+        {
+            "path":"/",
+            "operations":[
+                {
+                    "method":"GET",
+                    "summary":"This function does some magic xyz",
+                    "nickname":"logidx"
+                },
+                {
+                    "method":"POST",
+                    "summary":"This function does some magic xyz",
+                    "nickname":"newlog"
+                }
+            ]
+        },
+        {
+            "path":"/logs/add",
+            "operations":[
+                {
+                    "method":"POST",
+                    "summary":"Create or add new entries",
+                    "nickname":"partial"
+                }
+            ]
+        },
+        {
+            "path":"/logs/{id}",
+            "operations":[
+                {
+                    "method":"GET",
+                    "summary":"View a log entry",
+                    "nickname":"read",
+                    "parameters":[
+                        {
+                            "paramType":"path",
+                            "name":"id",
+                            "type":"string",
+                            "required":true,
+                            "description":"The unique ID"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
