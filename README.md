@@ -5,7 +5,7 @@ Codeigniter with swagger api
 
 You can use codeigniter-swagger fast to set up restful api based on ci.
 
-<h2>requirements</h2>
+<h2>Requirements</h2>
 
 php 5.3 or higher.
 
