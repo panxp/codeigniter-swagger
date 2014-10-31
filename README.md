@@ -15,6 +15,8 @@ Support Namespace, phar.
 
 generate json <br />
 
+cd docs/php
+
 php swagger.phar /home/wwwroot/ci/application/controller -o /home/wwwroot/ci/docs/json
 
 http://yourdomain.com/docs/
